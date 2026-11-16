@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Candy Esinam Nartey | DevOps Engineer & IT Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand { font-size: 1.25rem; font-weight: 700; color: #fff; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+    section { margin-bottom: 4rem; scroll-margin-top: 5rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; }
+    
+    /* Hero */
+    .hero {
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .hero .subtitle { font-size: 1.2rem; color: var(--accent); margin-bottom: 1rem; font-weight: 500; }
+    .mission-statement {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-style: italic;
+      color: #e2e8f0;
+      margin: 1.5rem 0;
+    }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { border: 1px solid var(--border); color: var(--text); background: var(--card-bg); }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Grid & Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+    .tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 0.2rem 0.2rem 0.5rem 0;
+    }
+    .reflection-box {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: rgba(15, 23, 42, 0.7);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .reflection-box strong { color: var(--accent); }
+
+    /* Skills Grid */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .skill-cat { background: var(--card-bg); border: 1px solid var(--border); padding: 1.2rem; border-radius: 8px; }
+    .skill-cat h4 { color: var(--accent); margin-bottom: 0.5rem; }
+    .skill-cat ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+    .skill-cat li { margin-bottom: 0.3rem; }
+
+    /* Experience Timeline */
+    .timeline-item { margin-bottom: 2rem; border-left: 2px solid var(--border); padding-left: 1.5rem; position: relative; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .timeline-item h3 { font-size: 1.15rem; color: #fff; }
+    .timeline-meta { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .timeline-item ul { margin-left: 1.2rem; color: var(--text-muted); font-size: 0.9rem; }
+    .timeline-item li { margin-bottom: 0.4rem; }
+
+    footer { text-align: center; padding: 2rem 1.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="brand">Rose Candy <span>Nartey</span></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#principles">Guiding Principles</a></li>
+        <li><a href="#projects">Integrated Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#reflection">Reflections</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Hero / About Section -->
+    <section id="about" class="hero">
+      <h1>Rose Candy Esinam Nartey</h1>
+      <div class="subtitle">DevOps Engineer | Cloud Infrastructure & Reliability</div>
+      <p style="color: var(--text-muted); max-width: 800px;">
+        DevOps Engineer with 5+ years of experience across FinTech and financial-services platforms, including hands-on delivery within Hubtel Limited (Bank of Ghana-regulated). AWS Certified Cloud Practitioner pursuing a Bachelor of Applied Science in IT at Ensign College.
+      </p>
+      <div class="mission-statement">
+        "I am a DevOps engineer who provisions reliable infrastructure and strives to be a faithful steward of the systems and people I serve—integrating technical excellence, deliberate architecture, and Christ-centered integrity."
+      </div>
+      <div class="btn-group">
+        <a href="https://github.com/Candy-DevOps" class="btn btn-primary" target="_blank">GitHub Profile</a>
+        <a href="https://linkedin.com/in/candyesinam" class="btn btn-secondary" target="_blank">LinkedIn</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- Guiding Principles Section -->
+    <section id="principles">
+      <h2>Foundational Guiding Principles</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>1. Purposeful Architecture</h3>
+            <span class="tag">Moses 3:5</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              <strong>Spiritual Creation Precedes Physical Creation:</strong> In enterprise DevOps, infrastructure is never provisioned haphazardly. Blueprinting architecture, security policies, and Terraform IaC definitions prior to deployment mirrors the divine pattern of intentional design.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Key Anchor:</strong> Upfront design prevents system downtime, technical debt, and security drift.
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>2. Operational Diligence</h3>
+            <span class="tag">D&C 64:33–34</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              <strong>Great Things Proceed from Small Things:</strong> System stability and 99.99% platform uptime are built on small, disciplined daily habits—granular test suites, version-controlled commits, and proactive monitoring.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Key Anchor:</strong> Patient, incremental effort creates resilient cloud architectures and sustainable mastery.
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>3. Consecrated Stewardship</h3>
+            <span class="tag">Luke 16:10 & 3 Nephi 13:22</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              <strong>Integrity in Reliability:</strong> Managing production access and payment pipelines is a sacred stewardship. Keeping my eye single to ethical service ensures user data privacy, platform security, and cross-functional transparency.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Key Anchor:</strong> Faithfulness in the smallest automation script honors both team and end-users.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrated Work Projects Section -->
+    <section id="projects">
+      <h2>Three Integrated Work Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>1. Bank-Grade CI/CD Release Pipeline & DevSecOps Automation</h3>
+            <span class="tag">Azure DevOps</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Docker</span>
+            <span class="tag">OIDC / Secrets Vault</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              Engineered end-to-end automated delivery pipelines for high-volume financial services at Hubtel Limited. Integrated static container security scanning (Trivy) and Managed Identity authentication via OIDC, reducing deployment cycles by 30% while preserving strict regulatory compliance.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Spiritual & Ethical Reflection:</strong> Embodiment of <em>Operational Diligence</em> (D&C 64:33–34). Automating security scanning and secret externalization acts as an ethical guardrail, protecting end-users' financial transactions from deployment human error.
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>2. Multi-Tier Cloud Infrastructure as Code (IaC)</h3>
+            <span class="tag">Terraform</span>
+            <span class="tag">AWS (VPC, EC2, RDS, S3)</span>
+            <span class="tag">Ansible</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              Architected reproducible, highly available multi-tier cloud infrastructure on AWS using modular Terraform scripts. Established remote S3 backend state locking with DynamoDB, preventing configuration drift and securing environments to CIS standards.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Spiritual & Ethical Reflection:</strong> Reflects <em>Purposeful Architecture</em> (Moses 3:5). Blueprinting system topologies in code prior to physical provisioning enforces cost governance, intentional security design, and orderly execution.
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>3. Observability, Metric Telemetry & Incident Response Suite</h3>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Datadog</span>
+            <span class="tag">AWS CloudWatch</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+              Implemented comprehensive telemetry dashboards and alert rules across Kubernetes cluster workloads. Cut Mean Time to Resolution (MTTR) by 20% and facilitated proactive root cause analysis (RCA) during platform incidents.
+            </p>
+          </div>
+          <div class="reflection-box">
+            <strong>Spiritual & Ethical Reflection:</strong> Demonstrates <em>Consecrated Stewardship</em> (Luke 16:10) and the <em>AMP Model</em>. Metric telemetry brings transparent light into system operations, driving out operational darkness and fostering team autonomy.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+      <h2>Technical Competencies & Certifications</h2>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h4>Cloud & Platforms</h4>
+          <ul>
+            <li>AWS (EC2, S3, RDS, VPC, IAM)</li>
+            <li>Microsoft Azure (AKS, ACR, Key Vault)</li>
+            <li>AWS Certified Cloud Practitioner</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <h4>CI/CD & Containers</h4>
+          <ul>
+            <li>GitHub Actions, Azure DevOps, Jenkins</li>
+            <li>Docker, Kubernetes, Helm, Rancher</li>
+            <li>ArgoCD & GitOps Workflows</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <h4>Infrastructure as Code</h4>
+          <ul>
+            <li>Terraform (State Locking, Modules)</li>
+            <li>Ansible & CloudFormation</li>
+            <li>Linux Administration (Ubuntu, CentOS)</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <h4>DevSecOps & Scripting</h4>
+          <ul>
+            <li>Prometheus, Grafana, Datadog</li>
+            <li>Bash, Python, PowerShell</li>
+            <li>IAM Policies, OIDC, Vulnerability Scanning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <div class="timeline-item">
+        <h3>Product Reliability Engineer | Hubtel Limited</h3>
+        <div class="timeline-meta">Oct 2024 – Present | Bank of Ghana-Regulated FinTech</div>
+        <ul>
+          <li>Build and maintain CI/CD pipelines across Azure DevOps and GitHub Actions, cutting release times by 30%.</li>
+          <li>Provision AWS infrastructure using modular Terraform templates with remote S3 backend state management.</li>
+          <li>Orchestrate containerized workloads on Kubernetes, maintaining 99.99% availability for payment platforms.</li>
+          <li>Embed DevSecOps controls (IAM policies, vulnerability scanning) into automated deployment workflows.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Performance Monitoring Engineer | Hubtel Limited</h3>
+        <div class="timeline-meta">Feb 2023 – Sept 2024 | Accra, Ghana</div>
+        <ul>
+          <li>Sustained 99.99%+ platform uptime across core financial services and transaction backends.</li>
+          <li>Conducted systematic root cause analyses (RCA) and developed automated recovery routines, reducing MTTR by 20%.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>DevOps Engineer (Graduate Trainee) | Jomacs IT Solutions</h3>
+        <div class="timeline-meta">Jan 2020 – Jan 2023</div>
+        <ul>
+          <li>Configured containerized deployments with Docker and Kubernetes for microservices.</li>
+          <li>Built CI/CD testing and deployment flows, improving engineering release velocity.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Reflective Section -->
+    <section id="reflection">
+      <h2>Spiritual Reflection & Agency in Engineering</h2>
+      <div class="card">
+        <h3 style="color: var(--accent); margin-bottom: 0.8rem;">Personal Agency, Reflection, and Intertwined Growth</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Meditating on Doctrine and Covenants 58:26–28 highlights that we should not be compelled in all things, but be anxiously engaged in a good cause of our own free will. In DevOps engineering, agency translates into proactive creation. Rather than waiting for system downtime or security incidents to react, an anxiously engaged engineer provisions self-healing infrastructure, automates security guardrails, and designs resilient CI/CD pipelines.
+        </p>
+        <p style="color: var(--text-muted);">
+          Drawing upon Elder Joseph B. Wirthlin’s message in <em>Come What May, and Love It</em> and President Dieter F. Uchtdorf’s counsel in <em>Be Not Afraid, Only Believe</em>, I recognize that adversity—whether technical outages or team misalignments—offers vital space for refinement. When we maintain an outward mindset and seek light over cynicism, our technical capabilities and spiritual covenants become intertwined like strands in a rope, enabling us to build systems that honor God and serve humanity with unwavering integrity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact & Mentorship Section -->
+    <section id="contact">
+      <h2>Connect & Mentorship</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Open to technical collaboration, professional mentorship, and discussing cloud reliability best practices.
+      </p>
+      <div class="btn-group">
+        <a href="mailto:candyesinam@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://linkedin.com/in/candyesinam" class="btn btn-secondary" target="_blank">LinkedIn Profile</a>
+        <a href="https://github.com/Candy-DevOps" class="btn btn-secondary" target="_blank">GitHub Profile</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Rose Candy Esinam Nartey | Hosted on GitHub Pages | Ensign College BAS in IT</p>
+  </footer>
+
+</body>
+</html>
